@@ -7,7 +7,7 @@ pipeline {
   triggers {
     pollSCM '* * * * *'
   }
-  stager {
+  stages {
     stage('Build') {
       steps {
         echo "building..."
