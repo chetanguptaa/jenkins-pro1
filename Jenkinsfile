@@ -1,6 +1,8 @@
 pipeline {
   agent {
-    docker-agent-alpine
+    docker {
+      image 'node:6-alpine'
+    }
   }
 
   triggers {
@@ -9,12 +11,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo "building..."
+        echo "npm install"
       }
     }
     stage('Test') {
       steps {
-        echo "Testing..."
+        echo "node app.js"
       }
     }
     stage('Deliver') {
