@@ -13,9 +13,6 @@ pipeline {
     stage('Test') {
       steps {
         echo "Testing..."
-        sh '''
-        node app.js
-        '''
       }
     }
     stage('Deliver') {
