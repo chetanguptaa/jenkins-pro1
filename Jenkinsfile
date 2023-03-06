@@ -1,31 +1,47 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6-alpine'
-    }
-  }
+    
+    agent any
 
-  triggers {
-    pollSCM '* * * * *'
-  }
-  stages {
-    stage('Build') {
-      steps {
-        echo "npm install"
-      }
+    triggers {
+
+        pollSCM '* * * * *'
+   
     }
-    stage('Test') {
-      steps {
-        echo "node app.js"
-      }
+
+    stages {
+
+        stage('Build') {
+
+            steps {
+
+                echo "building the application..."
+            
+            }
+        
+        }
+
+        stage('Test') {
+            
+            steps {
+                
+                echo "deploying the application..."
+            
+            }
+        
+        }
+        
+        stage('Deliver') {
+
+            steps {
+                
+                echo 'Deliver...'
+                
+                sh '''
+                
+                echo "doing delivery..."
+                
+                '''
+            }
+        }
     }
-    stage('Deliver') {
-      steps {
-        echo 'Deliver...'
-        sh '''
-        echo "doing delivery..."
-        '''
-      }
-    }
-  }
 }
